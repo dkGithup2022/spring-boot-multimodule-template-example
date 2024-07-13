@@ -4,11 +4,13 @@ import com.dankim.project.core.infra.rdms.common.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@Table(schema = "article")
 @NoArgsConstructor
 public class ArticleEntity extends BaseEntity {
     @Id

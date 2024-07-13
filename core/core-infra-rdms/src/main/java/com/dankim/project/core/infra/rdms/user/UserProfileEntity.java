@@ -1,5 +1,6 @@
 package com.dankim.project.core.infra.rdms.user;
 
+import com.dankim.project.core.infra.rdms.common.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,19 +11,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class UserProfileEntity {
+public class UserProfileEntity  extends BaseEntity {
     @Id
     @GeneratedValue
     private Long id;
 
+    private Long userId;
+
     private String nickname;
 
-    private UserProfileEntity(Long id, String nickname) {
+    private UserProfileEntity(Long id, Long userId, String nickname) {
         this.id = id;
+        this.userId = userId;
         this.nickname = nickname;
     }
 
-    public static UserProfileEntity of(String nickname) {
-        return new UserProfileEntity(null, nickname);
+    public static UserProfileEntity of(Long userId, String nickname) {
+        return new UserProfileEntity(null, userId, nickname);
     }
 }

@@ -11,5 +11,5 @@ public interface IArticleEntityRepository {
 
     Optional<ArticleEntity> findById(Long id);
 
-    List<ArticleEntity> listByUserId(Long userId);
+    List<ArticleEntity> getAllByUserId(Long userId);
 }

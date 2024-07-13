@@ -1,6 +1,7 @@
 package com.dankim.project.core.infra.rdms.user;
 
 
+import com.dankim.project.core.infra.rdms.common.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class UserEntity {
+public class UserEntity extends BaseEntity {
     @Id
     @GeneratedValue
     private Long id;
