@@ -20,5 +20,9 @@ public class User {
         return new User(userId, nickname, available);
     }
 
+    public static User of(Nickname nickname, Boolean available) {
+        return new User(null, nickname, available);
+    }
+
 
 }
