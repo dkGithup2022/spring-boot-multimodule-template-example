@@ -11,7 +11,6 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Table(schema = "article")
 @NoArgsConstructor
 public class ArticleEntity extends BaseEntity {
     @Id

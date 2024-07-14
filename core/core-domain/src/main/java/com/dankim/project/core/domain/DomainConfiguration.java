@@ -5,6 +5,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.dankim.project.core.domain"})
+@ComponentScan(basePackages = {"com.dankim.project.core.infra.rdms"})
 public class DomainConfiguration {
 }
