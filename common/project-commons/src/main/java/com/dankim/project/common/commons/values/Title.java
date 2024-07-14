@@ -1,6 +1,7 @@
 package com.dankim.project.common.commons.values;
 
 import com.dankim.project.common.commons.exceptions.common.SpecificationException;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,8 +10,12 @@ public class Title {
 
     private final String title;
 
+    public String get() {
+        return title;
+    }
+
     private Title(String title) {
-        if (validateTitle(title))
+        if (!validateTitle(title))
             throw new SpecificationException("tell them why it is illegal title");
         this.title = title;
     }

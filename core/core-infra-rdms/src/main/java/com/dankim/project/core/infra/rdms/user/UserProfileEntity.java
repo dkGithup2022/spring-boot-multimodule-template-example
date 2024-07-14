@@ -6,17 +6,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
 @Getter
 @NoArgsConstructor
-public class UserProfileEntity  extends BaseEntity {
+public class UserProfileEntity extends BaseEntity {
     @Id
     @GeneratedValue
     private Long id;
 
     private Long userId;
+
+    @Setter
 
     private String nickname;
 

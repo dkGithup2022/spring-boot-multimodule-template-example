@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -18,7 +19,10 @@ public class ArticleEntity extends BaseEntity {
     private Long id;
 
     private Long userId;
+
+    @Setter
     private String title;
+    @Setter
     private String content;
 
     private ArticleEntity(Long id, Long userId, String title, String content) {

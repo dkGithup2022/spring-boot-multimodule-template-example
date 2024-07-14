@@ -1,13 +1,19 @@
 package com.dankim.project.common.commons.values;
 
 import com.dankim.project.common.commons.exceptions.common.SpecificationException;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Content {
     Logger log = LoggerFactory.getLogger(Content.class);
 
+
     private final String content;
+
+    public String get() {
+        return content;
+    }
 
     private Content(String content) {
         if (!validateContent(content))

@@ -9,6 +9,10 @@ public class Nickname {
 
     private final String nickname;
 
+    public String get() {
+        return nickname;
+    }
+
     private Nickname(String nickname) {
         if (!validateContent(nickname))
             throw new SpecificationException("tell them why it is illegal nickname");

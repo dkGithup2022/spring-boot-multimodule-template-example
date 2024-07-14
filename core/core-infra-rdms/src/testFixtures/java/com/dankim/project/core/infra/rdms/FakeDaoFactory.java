@@ -39,4 +39,11 @@ public class FakeDaoFactory {
     public static IUserProfileQuery getIUserProfileQuery() {
         return iUserProfileQuery;
     }
+
+
+    public static void clearAll() {
+        ((FakeIUserEntityRepository) iUserEntityRepository).getDb().clear();
+        ((FakeIUserProfileEntityRepository) iUserProfileEntityRepository).getDb().clear();
+        ((FakeIArticleEntityRepository) iArticleEntityRepository).getDb().clear();
+    }
 }
