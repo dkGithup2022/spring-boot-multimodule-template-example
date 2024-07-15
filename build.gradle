@@ -29,13 +29,13 @@ def javaProjects = [ // Java 로 작성된 소스코드에 대한 공통작업 �
 
                     //domain
                      project(":core:core-domain"),
-                     project(":core:core-infra-rdms"),
+                     project(":core:core-storage"),
 
                     // async request
                     project(":queue:queue-client"),
 
                     // common java values
-                    project("common:project-commons")
+                    project(":common:common")
 ]
 configure(javaProjects) {
     apply plugin: "java"

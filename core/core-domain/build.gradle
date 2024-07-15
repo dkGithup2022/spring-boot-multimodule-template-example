@@ -17,8 +17,8 @@ bootJar { enabled = false }
 
 dependencies {
 
-    implementation(project(":common:project-commons"))
-    implementation(project(":core:core-infra-rdms"))
+    implementation(project(":common:common"))
+    implementation(project(":core:core-storage"))
 
 
     // to use @Transactional annotation
@@ -29,10 +29,10 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
-    testImplementation(testFixtures(project(":core:core-infra-rdms")))
+    testImplementation(testFixtures(project(":core:core-storage")))
 
     // test fixture dependency
-    testFixturesImplementation(testFixtures(project(":core:core-infra-rdms")))
+    testFixturesImplementation(testFixtures(project(":core:core-storage")))
 }
 
 test {

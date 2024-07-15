@@ -6,5 +6,5 @@ bootJar { enabled = false }
 jar { enabled = true }
 
 dependencies {
-    implementation(project(":common:project-commons"))
+    implementation(project(":common:common"))
 }

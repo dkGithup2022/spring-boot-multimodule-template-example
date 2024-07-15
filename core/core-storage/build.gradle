@@ -8,7 +8,7 @@ plugins {
 }
 
 
-description = "core-infra-rdms module"
+description = "core-storage module"
 
 bootJar {
     enabled = false
