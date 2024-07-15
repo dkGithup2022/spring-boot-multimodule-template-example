@@ -1,19 +1,11 @@
 rootProject.name = 'springboot_multimodule_template'
-include 'core'
 
 include 'app:app-web-api'
-include 'core:core-infra-rdms'
+
 include 'core:core-domain'
-include 'core:core-domain'
-findProject(':core:core-domain')?.name = 'core-domain'
 include 'core:core-storage'
-findProject(':core:core-storage')?.name = 'core-storage'
-include 'app:app-web-api'
-findProject(':app:app-web-api')?.name = 'app-web-api'
-include 'queue:queue'
-findProject(':queue:queue-client')?.name = 'queue_client'
+
 include 'common:common'
-findProject(':common:common')?.name = 'common'
 include 'queue:queue-client'
-findProject(':queue:queue-client')?.name = 'queue-client'
+
 
