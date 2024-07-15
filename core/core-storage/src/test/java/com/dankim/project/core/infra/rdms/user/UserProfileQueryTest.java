@@ -18,7 +18,6 @@ class UserProfileQueryTest {
     @Autowired
     private UserProfileEntityRepository userProfileRepository;
 
-
     @Autowired
     private UserEntityRepository userRepository;
 

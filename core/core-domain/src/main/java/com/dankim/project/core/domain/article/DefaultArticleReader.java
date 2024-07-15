@@ -19,9 +19,12 @@ public class DefaultArticleReader implements ArticleReader {
 
     @Override
     public Optional<Article> get(Long articleId) {
-        var entity = articleEntityRepository.findById(articleId)
-                .orElseThrow(() -> new NotFoundException("can not find article with id | id : " + articleId));
+        var optional = articleEntityRepository.findById(articleId);
 
+        if (optional.isEmpty())
+            return Optional.empty();
+
+        var entity = optional.get();
         return Optional.of(Article.of(
                         entity.getUserId(),
                         Content.of(entity.getContent()),

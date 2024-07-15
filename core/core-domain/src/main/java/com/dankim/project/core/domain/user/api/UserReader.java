@@ -7,19 +7,20 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserReader {
-    /**
-     * userId 를 기준으로 조회합니다.
-     * @param userId
-     * @return
-     */
 
+    /**
+     * Retrieves a user by their ID.
+     *
+     * @param userId the ID of the user to retrieve
+     * @return an Optional containing the found user or Optional.empty() if not found
+     */
     Optional<User> get(Long userId);
 
-
     /**
-     * nickname 을 기준으로 조회합니다.
-     * @param nickname
-     * @return
+     * Retrieves users by their nickname.
+     *
+     * @param nickname the nickname of the users to retrieve
+     * @return a list of users with the given nickname
      */
     List<User> listUsersByNickname(Nickname nickname);
 }

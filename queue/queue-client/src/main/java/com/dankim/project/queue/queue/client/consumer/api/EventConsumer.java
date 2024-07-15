@@ -20,7 +20,6 @@ public interface EventConsumer {
 
     /**
      * queue 의 항목을 처음부터 count 갯수만큼 읽어오고 읽어온 항목을 지웁니다.
-     *
      * redis 를 이용해 개발하는 경우, 동시성 제어를 위해 luascript 를 활용해보세요 .
      *
      * @param queueName

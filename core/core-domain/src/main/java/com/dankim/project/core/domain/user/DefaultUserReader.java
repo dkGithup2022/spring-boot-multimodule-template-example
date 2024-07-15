@@ -39,7 +39,6 @@ public class DefaultUserReader implements UserReader {
     @Override
     public List<User> listUsersByNickname(Nickname nickname) {
         return userProfileQuery.listByUserNickname(nickname.get()).stream()
-                .map(e -> User.of(e.getUserId(), Nickname.of(e.getNickname()), e.getAvailable())).toList();
-
+                .map(user -> User.of(user.getUserId(), Nickname.of(user.getNickname()), user.getAvailable())).toList();
     }
 }
