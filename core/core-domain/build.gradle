@@ -32,7 +32,6 @@ dependencies {
     testImplementation(testFixtures(project(":core:core-infra-rdms")))
 
     // test fixture dependency
-
     testFixturesImplementation(testFixtures(project(":core:core-infra-rdms")))
 }
 

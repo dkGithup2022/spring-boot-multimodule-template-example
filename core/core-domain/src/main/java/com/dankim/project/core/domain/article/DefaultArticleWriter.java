@@ -24,7 +24,7 @@ public class DefaultArticleWriter implements ArticleWriter {
 
 
         entity.setTitle(article.getTitle().get());
-        entity.setTitle(article.getContent().get());
+        entity.setContent(article.getContent().get());
 
         return Article.of(
                 entity.getUserId(),

@@ -23,7 +23,7 @@ public class DefaultArticleValidator implements WebApiArticleValidator {
         var user = userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException("유저를 찾을 수 없음 : | userId : " + userId));
 
-        if (user.getAvailable())
+        if (!user.getAvailable())
             return false;
 
         return article.getAuthorId().equals(userId);
