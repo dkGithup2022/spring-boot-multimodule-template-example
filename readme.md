@@ -21,11 +21,11 @@
 - [소개](#소개)
 - [기반이 되는 책](#기반이-되는-책)
 - [구조](#구조)
-  - [구성 모듈 별 설명와 예시](#구조)
+  - [구성 모듈 별 설명와 예시](#구성-모듈-별-설명과-예시)
 - [추천하는 컨벤션](#추천하는-컨벤션)
   - [추천 컨벤션 1: 모듈에서 공개할 기능은 API 하위 경로의 인터페이스로 관리하기](#추천-컨벤션-1-모듈에서-공개할-기능은-api-하위-경로의-인터페이스로-관리하기)
     - [queue client 와 domain client 의 모듈에서 노출할 기능 관리](#Queue-Client-예시)
-    - [주석은 인터페이스에 쓰면 좋아요](#Queue-Client-예시)
+    - [주석은 인터페이스에 쓰면 좋아요](#주석은-인터페이스에-쓰면-좋아요)
   - [추천 컨벤션 2: testFixture 사용과 API 인터페이스의 Fake 객체로 테스트](#추천-컨벤션-2-testfixture-사용과-api-인터페이스의-fake-객체로-테스트)
     - [모듈에서 노출한 api 에 대한 fake 클래스로 테스트하기 예시](#추천-컨벤션-2-testfixture-사용과-api-인터페이스의-fake-객체로-테스트)
     - [순수 자바로 테스트를 해야 하는 이유](#순수-자바로-테스트-하는-이유) 
@@ -38,6 +38,8 @@
 ## 구조
 
 아래 항목은 패키지/모듈에 대한 최소 구조에 대한 간략한 설명입니다.
+
+### 구성 모듈 별 설명과 예시
 
 - **:app:app-web-api**
   - 배포되는 애플리케이션
@@ -67,7 +69,14 @@
 - **es-client**: Elasticsearch 클라이언트와 구성, 인덱스 관련 API 모음
 - **feign-client**: Spring Boot Feign에 대한 구성 및 공통으로 사용할 수 있는 커스텀 인자 모음 라이브러리
 - **batch-app** : 배치 작업에 대한 어플리케이션 입니다. :app 하위에 작성합니다.
+
+<br/>
+
+
+
 ---
+
+
 
 ## 추천하는 컨벤션
 
@@ -100,14 +109,28 @@
 
 
 
-2. 인터페이스 선언
+#### 주석은 인터페이스에 쓰면 좋아요
+
+모듈 사용을 위해 읽어야할 문서를 최소화해야 합니다. (어처피 readme 에 장문의 편지를 써도 안 읽는 사람이 생기기 때문에.. )
+
+모듈에서 노출할 기능을 api 하위의 인터페이스에 정의하고 api의 목적과 특징을 작성해주세요. 대표적으로 작성해야 할 내용은 아래와 같습니다.
+
+- 함수의 목적
+- 인풋, 리턴 타입
+- 예외 상황과 예외 클래스 타입
 
 ```java
 public interface EventConsumer {
 
     /**
      * 큐의 항목을 from 번부터 count 갯수만큼 읽어옵니다.
+     * count 만큼 원소가 존재하지 않는다면, 있는 만큼만 가져옵니다. 
      * 큐의 항목을 지우지는 않습니다.
+     * 
+     * [exception]
+     * 
+     * NotFoundException.class  : queueName 에 해당하는 queue 가 존재하지 않는 경우.
+     * ServerException.class    : 그 외 예외 사항 
      *
      * @param queueName
      * @param count
@@ -118,7 +141,12 @@ public interface EventConsumer {
     /**
      * 큐의 항목을 처음부터 count 갯수만큼 읽어오고 읽어온 항목을 지웁니다.
      * Redis를 이용해 개발하는 경우, 동시성 제어를 위해 LuaScript를 활용해보세요.
+     * 
+     *  [exception]
      *
+     * NotFoundException.class  : queueName 에 해당하는 queue 가 존재하지 않는 경우.
+     * ServerException.class    : 그 외 예외 사항
+     * 
      * @param queueName
      * @param count
      */
@@ -336,10 +364,12 @@ class GithubJoinApiServiceTest {
 
 1. @DataJpaTest 를 통한 infra layer 테스트
 -  개당 평균 : 21ms
+- 
    ![datajpa_infra_layer_test.png](images%2Fdatajpa_infra_layer_test.png)
 
 2. FakeRepo 를 주입받아 테스트한 pure java 로 테스트
 - 개당 평균 : 0.6 ms
+- 
   ![domain_layer_pure_java_test.png](images%2Fdomain_layer_pure_java_test.png)
 
 ### 
