@@ -46,7 +46,7 @@ public class DefaultUserApiService implements UserApiService {
 
     @Override
     public Long create(String nickname) {
-        var created = userWriter.update(User.of(Nickname.of(nickname), true));
+        var created = userWriter.newUser(User.of(Nickname.of(nickname), true));
         return created.getUserId();
     }
 

@@ -15,6 +15,10 @@ public class Content {
         return content;
     }
 
+    public String getContent() {
+        return content;
+    }
+
     private Content(String content) {
         if (!validateContent(content))
             throw new SpecificationException("tell them why it is illegal content");

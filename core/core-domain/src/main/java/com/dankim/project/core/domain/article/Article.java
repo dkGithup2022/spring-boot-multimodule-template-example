@@ -6,8 +6,10 @@ import com.dankim.project.common.commons.values.Title;
 import lombok.Getter;
 import lombok.NonNull;
 
+import java.io.Serializable;
+
 @Getter
-public class Article {
+public class Article  {
 
     @NonNull
     private final Long authorId;

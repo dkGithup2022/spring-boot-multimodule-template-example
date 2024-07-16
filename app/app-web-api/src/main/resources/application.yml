@@ -1,0 +1,13 @@
+springdoc:
+  packages-to-scan: com.dankim.project.app.web.api
+  default-consumes-media-type: application/json;charset=UTF-8
+  swagger-ui:
+    path: /
+    disable-swagger-default-url: true
+    display-request-duration: true
+    operations-sorter: alpha
+
+spring:
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
